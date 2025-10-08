@@ -24,7 +24,7 @@ function showProposal() {
   setTimeout(() => {
     container.innerHTML += `
       <div class="fade">
-        <p> Өмнө нь асуусан ч гэсэн дахиад асууя. Анхнаасаа л ингэж асуух байсан юм ххха</p>
+        <p>Өмнө нь асуусан ч гэсэн дахиад асууя. Анхнаасаа л ингэж асуух байсан юм ххха</p>
       </div>
     `;
   }, 2000);
@@ -32,9 +32,9 @@ function showProposal() {
   setTimeout(() => {
     container.innerHTML += `
       <div class="fade">
-        <h2>  Надтай хамт болзоонд явах уу? 💌</h2>
-        <button onclick="accepted()">Yessss 💕</button>
-        <button onclick="confirmNo()">No 😢</button>
+        <h2>Надтай хамт болзоонд явах уу? 💌</h2>
+        <button onclick="accepted()">Тийм ээ 💕</button>
+        <button onclick="confirmNo()">Үгүй 😢</button>
       </div>
     `;
   }, 4000);
@@ -43,9 +43,9 @@ function showProposal() {
 function confirmNo() {
   container.innerHTML = `
     <div class="fade">
-      <p> Итгэлтэй байна уу? 🥺</p>
-      <button onclick="showProposal()">No 😅</button>
-      <button onclick="rejected()">Yes 😞</button>
+      <p>Итгэлтэй байна уу? 🥺</p>
+      <button onclick="showProposal()">Үгүй 😅</button>
+      <button onclick="rejected()">Тийм ээ 😞</button>
     </div>
   `;
 }
@@ -53,7 +53,7 @@ function confirmNo() {
 function rejected() {
   container.innerHTML = `
     <div class="fade">
-      <h2>Okay... ЗААЗАА ОЙЛГОЛОО 💔</h2>
+      <h2>Заазаа ойлголоо 💔</h2>
     </div>
   `;
   saveResponse("rejected");
@@ -69,7 +69,7 @@ function accepted() {
 
   container.innerHTML = `
     <div class="fade">
-      <h2>ӨДӨРӨӨ СОНГОНО УУ 💕</h2>
+      <h2>Өдрөө сонгоно уу 💕</h2>
       ${buttonsHtml}
     </div>
   `;
@@ -79,10 +79,9 @@ function confirmDay(selectedDay) {
   container.innerHTML = `
     <div class="fade">
       <h2>Зөвшөөрсөнд баярлалаа 💖</h2>
-      <p>I’ll make sure our date on <strong>${selectedDay}</strong> goes perfectly. Just show up 😊</p>
+      <p><strong>${selectedDay}</strong>-нд болзоондоо бэлэн байгаарай. Бүхнийг төгс болгоно 😊</p>
     </div>
   `;
-  
   saveResponse("accepted", selectedDay);
 }
 
@@ -123,7 +122,7 @@ function saveResponse(answer, day = "") {
 function getDateOptions() {
   const startDate = new Date("2025-10-12"); // Saturday
   const endDate = new Date("2025-11-01");   // Next Sunday
-  const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday""Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const daysOfWeek = ["Ням", "Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба"];
   const options = [];
 
   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
