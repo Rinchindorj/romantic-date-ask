@@ -2,18 +2,28 @@
 <html lang="mn">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>💌 Болзоо</title>
-  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container" id="container">
-    <div class="greeting">
-      <h1 id="greeting-text">Сайн уу, өнөөдрийг хэр өнгөрүүлэв дээ? 💖</h1>
-      <input type="text" id="response-input" placeholder="Хариултаа бичнэ үү..." />
-<button id="next-btn" style="display: none;">Дараагийн алхам</button>    </div>
+  <div id="container">
+    <h1>Сайн уу, өнөөдрийг хэр өнгөрүүлэв дээ? 💖</h1>
+    <input type="text" id="response-input" placeholder="Хариултаа бичнэ үү..." />
+    <button id="next-btn" style="display: none;">Дараагийн алхам</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const nextBtn = document.getElementById('next-btn');
+      const responseInput = document.getElementById('response-input');
+
+      responseInput.addEventListener('input', () => {
+        nextBtn.style.display = responseInput.value.trim() !== '' ? 'inline-block' : 'none';
+      });
+
+      nextBtn.addEventListener('click', () => {
+        alert("Button clicked!");
+      });
+    });
+  </script>
 </body>
 </html>
