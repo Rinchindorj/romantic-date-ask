@@ -89,7 +89,7 @@ function confirmDay(selectedDay) {
 function saveResponse(answer, day = "") {
   const timestamp = new Date().toISOString();
 
-  fetch('https://phxikwtzecbjkvqlzcsj.supabase.co', {
+  fetch('https://phxikwtzecbjkvqlzcsj.supabase.co/rest/v1/responses', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -105,14 +105,19 @@ function saveResponse(answer, day = "") {
   })
   .then(res => {
     if (!res.ok) {
-      alert("Something went wrong saving your answer 😢");
+      // This line shows detailed error info
+      return res.text().then(text => {
+        console.error("Supabase error:", text);
+        alert("Something went wrong saving your answer 😢");
+      });
     }
   })
   .catch(err => {
-    console.error(err);
+    console.error("JavaScript error:", err);
     alert("Error saving response.");
   });
 }
+
 
 // Generate list of date options: This Saturday to next Sunday
 function getDateOptions() {
