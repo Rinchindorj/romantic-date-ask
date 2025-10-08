@@ -17,14 +17,14 @@ nextBtn.addEventListener('click', () => {
 function showProposal() {
   container.innerHTML = `
     <div class="fade">
-      <p>I wanted to ask you something...</p>
+      <p>Нэгэн зүйлийг асуух гэсэн юм.</p>
     </div>
   `;
 
   setTimeout(() => {
     container.innerHTML += `
       <div class="fade">
-        <p>It's hard to say it...</p>
+        <p> Өмнө нь асуусан ч гэсэн дахиад асууя. Анхнаасаа л ингэж асуух байсан юм ххха</p>
       </div>
     `;
   }, 2000);
@@ -32,7 +32,7 @@ function showProposal() {
   setTimeout(() => {
     container.innerHTML += `
       <div class="fade">
-        <h2>Will you go on a date with me? 💌</h2>
+        <h2>  Надтай хамт болзоонд явах уу? 💌</h2>
         <button onclick="accepted()">Yessss 💕</button>
         <button onclick="confirmNo()">No 😢</button>
       </div>
@@ -43,7 +43,7 @@ function showProposal() {
 function confirmNo() {
   container.innerHTML = `
     <div class="fade">
-      <p>Are you sure? 🥺</p>
+      <p> Итгэлтэй байна уу? 🥺</p>
       <button onclick="showProposal()">No 😅</button>
       <button onclick="rejected()">Yes 😞</button>
     </div>
@@ -53,7 +53,7 @@ function confirmNo() {
 function rejected() {
   container.innerHTML = `
     <div class="fade">
-      <h2>Okay... I get it 💔</h2>
+      <h2>Okay... ЗААЗАА ОЙЛГОЛОО 💔</h2>
     </div>
   `;
   saveResponse("rejected");
@@ -69,7 +69,7 @@ function accepted() {
 
   container.innerHTML = `
     <div class="fade">
-      <h2>Pick a day for our date 💕</h2>
+      <h2>ӨДӨРӨӨ СОНГОНО УУ 💕</h2>
       ${buttonsHtml}
     </div>
   `;
@@ -78,7 +78,7 @@ function accepted() {
 function confirmDay(selectedDay) {
   container.innerHTML = `
     <div class="fade">
-      <h2>Thank you for accepting my offer 💖</h2>
+      <h2>Зөвшөөрсөнд баярлалаа 💖</h2>
       <p>I’ll make sure our date on <strong>${selectedDay}</strong> goes perfectly. Just show up 😊</p>
     </div>
   `;
@@ -108,7 +108,7 @@ function saveResponse(answer, day = "") {
       // This line shows detailed error info
       return res.text().then(text => {
         console.error("Supabase error:", text);
-        alert("Something went wrong saving your answer 😢");
+        alert("Something went wrong saving your answer ");
       });
     }
   })
@@ -122,8 +122,8 @@ function saveResponse(answer, day = "") {
 // Generate list of date options: This Saturday to next Sunday
 function getDateOptions() {
   const startDate = new Date("2025-10-12"); // Saturday
-  const endDate = new Date("2025-10-20");   // Next Sunday
-  const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const endDate = new Date("2025-11-01");   // Next Sunday
+  const daysOfWeek = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday""Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
   const options = [];
 
   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
