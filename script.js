@@ -87,12 +87,31 @@ function confirmDay(selectedDay) {
 }
 
 function saveResponse(answer, day = "") {
-  const data = {
-    answer,
-    day,
-    timestamp: new Date().toISOString()
-  };
-  localStorage.setItem("response", JSON.stringify(data));
+  const timestamp = new Date().toISOString();
+
+  fetch('https://phxikwtzecbjkvqlzcsj.supabase.co', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoeGlrd3R6ZWNiamt2cWx6Y3NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MjUyNDQsImV4cCI6MjA3NTUwMTI0NH0.HHh3oz1MrtaQhGdcIegE2UfWYk7IqzQUj6L_pLIEI1E',
+      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoeGlrd3R6ZWNiamt2cWx6Y3NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MjUyNDQsImV4cCI6MjA3NTUwMTI0NH0.HHh3oz1MrtaQhGdcIegE2UfWYk7IqzQUj6L_pLIEI1E',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({
+      answer,
+      day,
+      timestamp
+    })
+  })
+  .then(res => {
+    if (!res.ok) {
+      alert("Something went wrong saving your answer 😢");
+    }
+  })
+  .catch(err => {
+    console.error(err);
+    alert("Error saving response.");
+  });
 }
 
 // Generate list of date options: This Saturday to next Sunday
