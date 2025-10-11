@@ -78,8 +78,8 @@ function accepted() {
 function confirmDay(selectedDay) {
   container.innerHTML = `
     <div class="fade">
-      <h2>Зөвшөөрсөнд баярлалаа 💖</h2>
-      <p><strong>${selectedDay}</strong>-нд болзоондоо бэлэн байгаарай. Бүхнийг төгс болгоно 😊</p>
+      <h2>💖</h2>
+      <p><strong>${selectedDay}</strong>-нд болзоондоо бэлэн байгаарай. 😊</p>
     </div>
   `;
   saveResponse("accepted", selectedDay);
