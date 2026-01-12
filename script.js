@@ -53,15 +53,19 @@ function confirmNo() {
 function rejected() {
   container.innerHTML = `
     <div class="fade">
-      <h2>Заазаа ойлголоо 💔</h2>
+      <h2>Хэхэ, би бууж өгөхгүй шүү 😄</h2>
+      <p>Дахиад нэг удаа асууя...</p>
     </div>
   `;
-  saveResponse("rejected");
+
+  // Wait a moment, then ask again
+  setTimeout(() => {
+    showProposal();
+  }, 2000);
 }
 
 function accepted() {
   const availableDays = getDateOptions();
-
   let buttonsHtml = '';
   availableDays.forEach((day) => {
     buttonsHtml += `<button onclick="confirmDay('${day}')">${day}</button><br>`;
@@ -92,8 +96,8 @@ function saveResponse(answer, day = "") {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoeGlrd3R6ZWNiamt2cWx6Y3NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MjUyNDQsImV4cCI6MjA3NTUwMTI0NH0.HHh3oz1MrtaQhGdcIegE2UfWYk7IqzQUj6L_pLIEI1E',
-      'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBoeGlrd3R6ZWNiamt2cWx6Y3NqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk5MjUyNDQsImV4cCI6MjA3NTUwMTI0NH0.HHh3oz1MrtaQhGdcIegE2UfWYk7IqzQUj6L_pLIEI1E',
+      'apikey': 'YOUR_API_KEY',
+      'Authorization': 'Bearer YOUR_API_KEY',
       'Prefer': 'return=minimal'
     },
     body: JSON.stringify({
@@ -104,10 +108,9 @@ function saveResponse(answer, day = "") {
   })
   .then(res => {
     if (!res.ok) {
-      // This line shows detailed error info
       return res.text().then(text => {
         console.error("Supabase error:", text);
-        alert("Something went wrong saving your answer ");
+        alert("Something went wrong saving your answer");
       });
     }
   })
@@ -117,17 +120,23 @@ function saveResponse(answer, day = "") {
   });
 }
 
-
 // Generate list of date options: This Saturday to next Sunday
 function getDateOptions() {
-  const startDate = new Date("2025-10-12"); // Saturday
-  const endDate = new Date("2025-11-01");   // Next Sunday
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const daysUntilSaturday = (6 - dayOfWeek + 7) % 7;
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() + daysUntilSaturday);
+
+  const endDate = new Date(startDate);
+  endDate.setDate(startDate.getDate() + 8);
+
   const daysOfWeek = ["Ням", "Даваа", "Мягмар", "Лхагва", "Пүрэв", "Баасан", "Бямба"];
   const options = [];
 
   for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
     const dayName = daysOfWeek[d.getDay()];
-    const dateStr = d.toDateString(); // e.g., "Sat Oct 12 2025"
+    const dateStr = d.toDateString();
     options.push(`${dayName} (${dateStr})`);
   }
 
