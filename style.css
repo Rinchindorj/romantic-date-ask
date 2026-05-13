@@ -1,52 +1,111 @@
+/* Core Styling */
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #ffb6c1, #ffe4e1);
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4a4a4a;
 }
 
 .container {
-  text-align: center;
-  max-width: 600px;
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  animation: fadeIn 2s ease;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    transition: all 0.5s ease;
+}
+
+h1, h2 {
+    font-family: 'Pacifico', cursive;
+    color: #ff4d6d;
+    margin-bottom: 20px;
+}
+
+/* Input Styling */
+.input-group {
+    margin-top: 25px;
 }
 
 input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-top: 20px;
-  width: 80%;
+    padding: 15px;
+    border: 2px solid #ffccd5;
+    border-radius: 15px;
+    width: 80%;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s;
 }
 
+input:focus {
+    border-color: #ff4d6d;
+}
+
+/* Button Styling */
 button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #ff69b4;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+    margin: 10px 5px;
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
 }
 
 button:hover {
-  background-color: #ff1493;
+    background: #ff758f;
+    transform: scale(1.05);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* AI Poem Box */
+#poem-container {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff0f3;
 }
 
+/* AI Activity Box */
+.activity-list {
+    background: #ffffff;
+    border-left: 5px solid #ff4d6d;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 12px;
+    text-align: left;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* Animations */
 .fade {
-  animation: fadeIn 1s ease;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background: #ffd1d1;
+    margin: 30px 0;
 }

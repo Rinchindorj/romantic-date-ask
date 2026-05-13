@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="mn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>💌 Болзоо</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>💌 Болзоо</title>
+    <!-- Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container" id="container">
-    <div class="greeting">
-      <h1 id="greeting-text">Сайн уу, өнөөдрийг хэр өнгөрүүлэв дээ? 💖</h1>
-      <input type="text" id="response-input" placeholder="Хариултаа бичнэ үү..." />
-      <button id="next-btn" style="display: none;">Дараагийн алхам</button>
+    <div class="container" id="container">
+        <div class="step-content">
+            <h1 id="greeting-text">Сайн уу, өнөөдрийг хэр өнгөрүүлэв дээ? 💖</h1>
+            <div class="input-group">
+                <input type="text" id="response-input" placeholder="Хариултаа бичнэ үү..." autocomplete="off" />
+                <button id="next-btn" style="display: none;">Үргэлжлүүлэх ✨</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
